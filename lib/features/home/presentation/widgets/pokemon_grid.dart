@@ -4,8 +4,12 @@ import 'package:flutter_template/features/home/presentation/widgets/pokemon_card
 
 class PokemonGrid extends StatelessWidget {
   final List<SummarizedPokemon> pokemons;
+  final bool isLoading;
+  final void Function() shouldLoadMore;
   const PokemonGrid({
     required this.pokemons,
+    required this.isLoading,
+    required this.shouldLoadMore,
     super.key,
   });
 
@@ -27,9 +31,14 @@ class PokemonGrid extends StatelessWidget {
             childAspectRatio: 1.5,
           ),
           itemCount: pokemons.length,
-          itemBuilder: (context, index) => PokemonCard(
+          itemBuilder: (context, index) {
+            if(!isLoading && pokemons.length - 9 == index){
+              shouldLoadMore();
+            }
+            return PokemonCard(
             pokemon: pokemons[index],
-          ),
+          );
+          },
         ),
       ),
     );

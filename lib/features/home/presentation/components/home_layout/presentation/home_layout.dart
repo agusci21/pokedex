@@ -14,7 +14,7 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
-      bloc: _cubit..getInitialsPokemons() ,
+      bloc: _cubit..getInitialsPokemons(),
       builder: (context, state) {
         return Column(
           children: [
@@ -30,7 +30,13 @@ class HomeLayout extends StatelessWidget {
 
   Widget _buildByState(BuildContext context, HomeLayoutState state) {
     if (state is Loaded) {
-      return PokemonGrid(pokemons: state.pokemons);
+      return PokemonGrid(
+        pokemons: state.pokemons,
+        isLoading: state.isLoadingMore,
+        shouldLoadMore: () async {
+          await _cubit.loadMore();
+        },
+      );
     }
     return const Center(
       child: CircularProgressIndicator(),
