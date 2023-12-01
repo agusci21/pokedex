@@ -4,6 +4,7 @@ abstract class SummarizedPokemonMapper {
   static SummarizedPokemon fromJson(json) {
     return SummarizedPokemon(
       name: json['name'],
+      url: json['url']
     );
   }
 }

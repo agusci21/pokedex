@@ -7,4 +7,11 @@ extension StringHelper on String {
     }
     return replaceAll(EnvironmentConfig.baseUrl, '').replaceAll('/', '').replaceAll(endpoint, '');
   }
+
+  String capitalizeFirst() {
+    if (isEmpty) {
+      return this;
+    }
+    return this[0].toUpperCase() + substring(1);
+  }
 }
