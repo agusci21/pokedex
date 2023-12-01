@@ -1,4 +1,5 @@
 import 'package:flutter_template/abstractions/i_navigation.dart';
+import 'package:flutter_template/features/home/home_module.dart';
 import 'package:flutter_template/implementations/navigation.dart';
 import 'package:flutter_template/infrastructure/environments_confi.dart';
 import 'package:flutter_template/abstractions/i_http_helper.dart';
@@ -13,6 +14,7 @@ abstract class IocManager {
   static void register() {
     _injector = IInjector.register(Injector());
     _registerCommonDependencies(_injector);
+    HomeModule.registerDependencies(_injector);
   }
 
   static void _registerCommonDependencies(IInjector injector) {
