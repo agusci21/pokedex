@@ -9,14 +9,7 @@ class PokemonSearchBar extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       child: TextField(
-        onChanged: (value) {
-          if (value.length < 3) {
-            return;
-          }
-          if (onChanged != null) {
-            onChanged!(value);
-          }
-        },
+        onChanged: onChanged,
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,

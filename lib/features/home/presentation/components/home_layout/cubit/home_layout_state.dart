@@ -8,9 +8,11 @@ final class Loading extends HomeLayoutState {}
 
 final class Loaded extends HomeLayoutState {
   final List<SummarizedPokemon> pokemons;
+  final List<SummarizedPokemon> totalPokemons;
   final bool isLoadingMore;
   Loaded({
     required this.pokemons,
+    required this.totalPokemons,
     this.isLoadingMore = false,
   });
 }

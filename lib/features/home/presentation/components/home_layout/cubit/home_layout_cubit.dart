@@ -19,11 +19,30 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     final output = await _repository.getAllPokemons(input);
 
     if (output.error == null) {
-      emit(Loaded(pokemons: output.pokemons!));
+      emit(
+        Loaded(pokemons: output.pokemons!, totalPokemons: output.pokemons!),
+      );
       _offset += limit;
       return;
     }
     emit(Failed(output.error!));
+  }
+
+  void onSearch(String searchField) {
+    if (state is! Loaded) {
+      return;
+    }
+    final previousState = state as Loaded;
+
+    final List<SummarizedPokemon> newList = [];
+    for (final element in previousState.totalPokemons) {
+      if (element.name.contains(searchField.toLowerCase())) {
+        newList.add(element);
+      }
+    }
+    emit(
+      Loaded(pokemons: newList, totalPokemons: previousState.totalPokemons),
+    );
   }
 
   Future<void> loadMore() async {
@@ -31,7 +50,13 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
       return;
     }
     final previousState = state as Loaded;
-    emit(Loaded(pokemons: previousState.pokemons, isLoadingMore: true));
+    emit(
+      Loaded(
+        pokemons: previousState.pokemons,
+        isLoadingMore: true,
+        totalPokemons: previousState.totalPokemons,
+      ),
+    );
     const limit = 60;
     final input = GetSummarizedPokemonsInput(offset: _offset, limit: limit);
     final output = await _repository.getAllPokemons(input);
@@ -41,6 +66,10 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
         Loaded(
           pokemons: [
             ...previousState.pokemons,
+            ...output.pokemons!,
+          ],
+          totalPokemons: [
+            ...previousState.totalPokemons,
             ...output.pokemons!,
           ],
         ),

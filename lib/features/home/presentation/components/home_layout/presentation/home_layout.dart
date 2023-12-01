@@ -19,7 +19,9 @@ class HomeLayout extends StatelessWidget {
         return Column(
           children: [
             PokemonSearchBar(
-              onChanged: (value) {},
+              onChanged: (value) {
+                _cubit.onSearch(value);
+              },
             ),
             _buildByState(context, state)
           ],
