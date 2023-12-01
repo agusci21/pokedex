@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/features/home/presentation/widgets/home_appbar.dart';
+import 'package:flutter_template/features/home/presentation/widgets/pokemon_card.dart';
 import 'package:flutter_template/features/home/presentation/widgets/pokemon_search_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,8 +36,14 @@ class _PokemonGrid extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: ListView.builder(
-          itemBuilder: (context, index) => Text(index.toString()),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          itemBuilder: (context, index) => PokemonCard(),
         ),
       ),
     );
