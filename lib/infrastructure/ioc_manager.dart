@@ -20,10 +20,6 @@ abstract class IocManager {
       () => EnvironmentConfig.baseUrl,
       'baseUrl',
     );
-    injector.registerFactoryByName<String>(
-      () => EnvironmentConfig.reportCharacterUrl,
-      'reportCharacterUrl',
-    );
     injector.registerFactory<IHttpHelper>(
       () => HttpHelper(),
     );
