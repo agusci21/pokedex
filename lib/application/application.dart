@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_template/application/localizations/i18n.dart';
 import 'package:flutter_template/application/localizations/locales.dart';
 import 'package:flutter_template/features/home/home_module.dart';
+import 'package:flutter_template/features/pokemon_details/pokemon_details_module.dart';
 
 class Application extends StatelessWidget {
   const Application({super.key});
@@ -14,7 +15,7 @@ class Application extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith(
-              (_) => Colors.pink.shade900,
+              (_) => const Color(0xffdc0a2d),
             ),
             shape: MaterialStateProperty.resolveWith(
               (_) => RoundedRectangleBorder(
@@ -24,11 +25,12 @@ class Application extends StatelessWidget {
           ),
         ),
         primaryColor: const Color(0xffdc0a2d),
-        splashColor: Colors.pink.shade900,
+        splashColor: const Color(0xffdc0a2d),
         scaffoldBackgroundColor: const Color(0xffdc0a2d),
-        appBarTheme: const AppBarTheme(backgroundColor: Color(0xffdc0a2d), elevation: 0),
+        appBarTheme:
+            const AppBarTheme(backgroundColor: Color(0xffdc0a2d), elevation: 0),
         snackBarTheme: SnackBarThemeData(
-          backgroundColor: Colors.pink.shade900,
+          backgroundColor: const Color(0xffdc0a2d),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -53,5 +55,6 @@ class Application extends StatelessWidget {
 
   Map<String, Widget Function(BuildContext)> _generateRoutes() => {
         ...HomeModule.generateRoutes(),
+        ...PokemonDetailsModule.generateRoutes(),
       };
 }

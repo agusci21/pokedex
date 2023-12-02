@@ -55,13 +55,17 @@ class SettingsButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextButton(
-                  child: Text(I18n.of(context).translate('order_by_id'),),
+                  child: Text(
+                    I18n.of(context).translate('order_by_id'),
+                  ),
                   onPressed: () {
                     cubit.onChanged(SettingsOptions.orderById);
                   },
                 ),
                 TextButton(
-                  child: Text(I18n.of(context).translate('order_by_name'),),
+                  child: Text(
+                    I18n.of(context).translate('order_by_name'),
+                  ),
                   onPressed: () {
                     cubit.onChanged(SettingsOptions.orderByName);
                   },

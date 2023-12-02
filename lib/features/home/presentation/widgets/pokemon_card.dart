@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/core/entities/summarized_pokemon.dart';
 import 'package:flutter_template/core/extensions/string_helpers.dart';
+import 'package:flutter_template/features/home/home_module.dart';
 
 class PokemonCard extends StatefulWidget {
   final SummarizedPokemon pokemon;
@@ -15,7 +16,8 @@ class PokemonCard extends StatefulWidget {
   State<PokemonCard> createState() => _PokemonCardState();
 }
 
-class _PokemonCardState extends State<PokemonCard> with SingleTickerProviderStateMixin {
+class _PokemonCardState extends State<PokemonCard>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> animation;
   @override
@@ -60,7 +62,12 @@ class _PokemonCardState extends State<PokemonCard> with SingleTickerProviderStat
         child: ListTile(
           title: Text(widget.pokemon.url.getIdFromUrl('pokemon') ?? ''),
           subtitle: Text(widget.pokemon.name.capitalizeFirst()),
-          onTap: () {},
+          onTap: ()  {
+             HomeModule.navigateToDetailedPokemonPage(
+              context,
+              widget.pokemon,
+            );
+          },
         ),
       ),
     );
