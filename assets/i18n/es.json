@@ -1,1 +1,15 @@
-{}
+{
+    "pokemon_searchbar_hint": "Buscar Pokémon",
+    "change_order": "Reordenar",
+    "order_by_id": "Ordenar por ID",
+    "order_by_name": "Ordenar por nombre",
+    "pokemon_types": "Tipos",
+    "base_stats": "Estadísticas base",
+    "hp": "Salud",
+    "attack": "Ataque",
+    "defense": "Defensa",
+    "special_attack": "Ataque especial",
+    "special_defense": "Defensa especial",
+    "speed": "Velocidad"
+  }
+  

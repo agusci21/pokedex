@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/features/home/presentation/components/home_layout/cubit/home_layout_cubit.dart';
-import 'package:flutter_template/features/home/presentation/components/order_button/cubit/order_button_cubit.dart';
+import 'package:flutter_template/features/home/presentation/widgets/order_button.dart';
 import 'package:flutter_template/features/home/presentation/widgets/pokemon_grid.dart';
 import 'package:flutter_template/features/home/presentation/widgets/pokemon_search_bar.dart';
-import 'package:flutter_template/features/home/presentation/components/order_button/presentation/settings_button.dart';
-import 'package:flutter_template/infrastructure/ioc_manager.dart';
 
 class HomeLayout extends StatelessWidget {
   final HomeLayoutCubit _cubit;
@@ -28,8 +26,7 @@ class HomeLayout extends StatelessWidget {
                     _cubit.onSearch(value);
                   },
                 ),
-                SettingsButton(
-                  cubit: IocManager.instance.resolve<OrderButtonCubit>(),
+                OrderButton(
                   onChanged: (optionSelected) {
                     _cubit.orderBy(optionSelected);
                   },

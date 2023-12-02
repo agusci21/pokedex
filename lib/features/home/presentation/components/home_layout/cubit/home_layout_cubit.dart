@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/entities/summarized_pokemon.dart';
+import 'package:flutter_template/core/extensions/string_helpers.dart';
 import 'package:flutter_template/features/home/domain/inputs_outputs/get_summarized_pokemons/get_summarized_pokemons_input.dart';
 import 'package:flutter_template/features/home/domain/repositories/i_summarized_pokemon_repository.dart';
-import 'package:flutter_template/features/home/presentation/components/order_button/presentation/settings_button.dart';
+import 'package:flutter_template/features/home/presentation/widgets/order_button.dart';
 
 part 'home_layout_state.dart';
 
@@ -82,7 +83,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     emit(previousState);
   }
 
-  void orderBy(SettingsOptions option) {
+  void orderBy(OrderOption option) {
     if (state is! Loaded) {
       return;
     }
@@ -91,9 +92,9 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     final orderList = previousState.pokemons;
     orderList.sort(
       (a, b) {
-        return option == SettingsOptions.orderByName
+        return option == OrderOption.orderByName
             ? _compareByName(a, b)
-            : _compareIdName(a, b);
+            : _compareById(a, b);
       },
     );
     emit(
@@ -108,7 +109,15 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     return a.name.compareTo(b.name);
   }
 
-  int _compareIdName(SummarizedPokemon a, SummarizedPokemon b) {
-    return a.url.compareTo(b.url);
+  int _compareById(SummarizedPokemon a, SummarizedPokemon b) {
+    final int firstId = int.parse(a.url.getIdFromUrl('pokemon')!);
+    final int secondId = int.parse(b.url.getIdFromUrl('pokemon')!);
+    if (firstId > secondId) {
+      return 1;
+    }
+    if (secondId > firstId) {
+      return -1;
+    }
+    return 0;
   }
 }
