@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/application/localizations/i18n.dart';
 import 'package:flutter_template/features/pokemon_details/presentation/components/pokemon_details_layout/cubit/pokemon_details_layout_cubit.dart';
 import 'package:flutter_template/features/pokemon_details/presentation/widgets/pokemon_stats.dart';
+import 'package:flutter_template/features/pokemon_details/presentation/widgets/pokemon_types.dart';
 
 class PokemonDetailsLayout extends StatelessWidget {
   final PokemonDetailsLayoutCubit cubit;
@@ -35,16 +36,17 @@ class PokemonDetailsLayout extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: _buildByState(state),
+          child: _buildByState(context, state),
         );
       },
     );
   }
 
-  Widget _buildByState(PokemonDetailsLayoutState state) {
+  Widget _buildByState(BuildContext context, PokemonDetailsLayoutState state) {
     if (state is Loaded) {
       return Column(
         children: [
+          PokemonTypes(types: state.pokemon.types),
           PokemonStats(
             stats: state.pokemon.stats,
           ),
