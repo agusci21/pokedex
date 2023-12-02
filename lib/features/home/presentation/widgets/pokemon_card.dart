@@ -60,10 +60,11 @@ class _PokemonCardState extends State<PokemonCard>
       animation: animation,
       child: Card(
         child: ListTile(
+          splashColor: Colors.transparent,
           title: Text(widget.pokemon.url.getIdFromUrl('pokemon') ?? ''),
           subtitle: Text(widget.pokemon.name.capitalizeFirst()),
-          onTap: ()  {
-             HomeModule.navigateToDetailedPokemonPage(
+          onTap: () {
+            HomeModule.navigateToDetailedPokemonPage(
               context,
               widget.pokemon,
             );
