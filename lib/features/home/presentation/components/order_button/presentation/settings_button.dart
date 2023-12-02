@@ -54,24 +54,16 @@ class SettingsButton extends StatelessWidget {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                RadioListTile<SettingsOptions>(
-                  title: Text(I18n.of(context).translate('order_by_id')),
-                  value: SettingsOptions.orderById,
-                  groupValue: state.selectedSettings,
-                  onChanged: (value) {
-                    if (value != null) {
-                      cubit.onChanged(value);
-                    }
+                TextButton(
+                  child: Text(I18n.of(context).translate('order_by_id'),),
+                  onPressed: () {
+                    cubit.onChanged(SettingsOptions.orderById);
                   },
                 ),
-                RadioListTile<SettingsOptions>(
-                  title: Text(I18n.of(context).translate('order_by_name')),
-                  value: SettingsOptions.orderByName,
-                  groupValue: state.selectedSettings,
-                  onChanged: (value) {
-                    if (value != null) {
-                      cubit.onChanged(value);
-                    }
+                TextButton(
+                  child: Text(I18n.of(context).translate('order_by_name'),),
+                  onPressed: () {
+                    cubit.onChanged(SettingsOptions.orderByName);
                   },
                 ),
               ],

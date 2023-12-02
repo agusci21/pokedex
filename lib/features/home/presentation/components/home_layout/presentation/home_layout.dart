@@ -31,7 +31,7 @@ class HomeLayout extends StatelessWidget {
                 SettingsButton(
                   cubit: IocManager.instance.resolve<OrderButtonCubit>(),
                   onChanged: (optionSelected) {
-                    print(optionSelected.name);
+                    _cubit.orderBy(optionSelected);
                   },
                 ),
               ],
