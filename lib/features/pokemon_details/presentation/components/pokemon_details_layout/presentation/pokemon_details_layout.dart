@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/application/localizations/i18n.dart';
 import 'package:flutter_template/features/pokemon_details/presentation/components/pokemon_details_layout/cubit/pokemon_details_layout_cubit.dart';
+import 'package:flutter_template/features/pokemon_details/presentation/widgets/pokemon_stats.dart';
 
 class PokemonDetailsLayout extends StatelessWidget {
   final PokemonDetailsLayoutCubit cubit;
@@ -10,7 +11,7 @@ class PokemonDetailsLayout extends StatelessWidget {
     required this.cubit,
     required this.pokemonId,
     super.key,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,9 @@ class PokemonDetailsLayout extends StatelessWidget {
 
   Widget _buildByState(PokemonDetailsLayoutState state) {
     if (state is Loaded) {
-      return Text(state.pokemon.name);
+      return PokemonStats(
+        stats: state.pokemon.stats,
+      );
     }
     return const Center(
       child: CircularProgressIndicator(),
