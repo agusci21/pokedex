@@ -43,8 +43,12 @@ class PokemonDetailsLayout extends StatelessWidget {
 
   Widget _buildByState(PokemonDetailsLayoutState state) {
     if (state is Loaded) {
-      return PokemonStats(
-        stats: state.pokemon.stats,
+      return Column(
+        children: [
+          PokemonStats(
+            stats: state.pokemon.stats,
+          ),
+        ],
       );
     }
     return const Center(
