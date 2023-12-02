@@ -32,12 +32,12 @@ class PokemonGrid extends StatelessWidget {
           ),
           itemCount: pokemons.length,
           itemBuilder: (context, index) {
-            if(!isLoading && pokemons.length - 9 == index){
+            if (!isLoading && pokemons.length - 9 <= index) {
               shouldLoadMore();
             }
             return PokemonCard(
-            pokemon: pokemons[index],
-          );
+              pokemon: pokemons[index],
+            );
           },
         ),
       ),

@@ -8,6 +8,7 @@ class PokemonSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width * .8,
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
