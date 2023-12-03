@@ -15,11 +15,10 @@ class SummarizedPokemonRepository implements ISummarizedPokemonRepository {
         _httpHelper = httpHelper;
 
   @override
-  Future<GetSummarizedPokemonsOutput> getAllPokemons(GetSummarizedPokemonsInput input) async {
-    String url = '$_baseUrl$_endpoint?limit=${input.limit}';
-    if (input.offset != null) {
-      url += '&offset=${input.offset}';
-    }
+  Future<GetSummarizedPokemonsOutput> getAllPokemons(
+      GetSummarizedPokemonsInput input) async {
+    final url =
+        '$_baseUrl$_endpoint?limit=${input.limit}&offset=${input.offset}';
     try {
       final response = await _httpHelper.get(url);
       if (response.isOk) {
