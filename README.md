@@ -1,16 +1,22 @@
-# flutter_template
+# Pokedex Flutter
 
-A new Flutter project.
+Este proyecto es una Pokedex desarrollada en Flutter, que permite a los usuarios explorar información sobre diferentes Pokémon.
 
-## Getting Started
+## Requisitos
 
-This project is a starting point for a Flutter application.
+- Flutter: [Descargar aquí](https://flutter.dev/docs/get-started/install)
 
-A few resources to get you started if this is your first Flutter project:
+## Instalación
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clona este repositorio: `git clone https://github.com/agusci21/pokedex.git`
+2. Accede al directorio del proyecto: `cd pokedex`
+3. Ejecuta `flutter pub get` para instalar las dependencias.
+4. Ejecuta `dart run build_runner build -d` para generar el código necesario para las pruebas.
+5. Ejecuta `flutter run` para iniciar la aplicación.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Ejecutar Tests
+
+Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
+
+```bash
+flutter test
